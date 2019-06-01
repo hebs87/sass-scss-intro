@@ -1,0 +1,45 @@
+/*---------------------------------------Scss as scripting language with logic*/
+/*define function - this converts px to em
+@function pxToEm ($value, $base) {
+    @return ($value / $base) + em;
+}
+
+call function within css - this will ensure font-size for h1 is 2em and this will be the value shown in the css file
+h1 {
+    font-size: pxToEm(32,16);
+}*/
+/*declare variable by $variabale: value;*/
+/*to do a list...
+$colors: $blue, $red, $green, $black, $white;
+but a better way of doing it is by doing an object map*/
+/*object map*/
+/*now we have an object, we need to iterate through it by using the @each keyword
+we then use the key and value variables
+for each key and color in the object, we'll use the .item class followed by # which will put the keyword in, which is specified in {} following the #*/
+.item-red {
+  background-color: #e84610; }
+
+.item-green {
+  background-color: #bada55; }
+
+.item-black {
+  background-color: #000; }
+
+/*call variable within css by using the variable name for the property value and this will be the value shown in the css file*/
+body {
+  background-color: #000; }
+
+div {
+  border: 1px solid #000; }
+
+h1 {
+  color: #fff; }
+
+/*pass variable to a CSS class
+1. create variable called class and give it a value of container
+2. create .# and give it a value of class, so that does .container on the stylesheet
+3. we can then specify partcular styles to this class and assign it to any element on the html sheet and it will inherit those styles*/
+.container {
+  background-color: orange; }
+
+/*# sourceMappingURL=css-scripting.css.map */

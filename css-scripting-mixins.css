@@ -1,0 +1,44 @@
+/*---------------------------------------Scss as scripting language with mixins*/
+/*similar to placeholders, but you pass parameters and arguments, so they are similar to functions in that way
+    used for code you want to reuse*/
+/*mixin (with logic - optional)
+1. create @mixin called button
+2. have two arguments: $color and $size
+3. set width to $size, height to half the $size, and border to $color, so it will be the same as the text color
+4. create if statement:
+    a. if $color is equal to #e84610, color will be white
+    b. else color will be $color
+*/
+/*to call the mixin
+1. when we want to create a button, we'll use the class name of .btn
+2. we use the @include followed by the name of the mixin (button)
+3. pass the actual values: color and size
+    this replaces $color and $size arguments in the .btn class - this is shown in main css
+*/
+.btn {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #e84610;
+  color: #fff; }
+
+/*content directive within a mixin
+1. create a mixin called example with no arguments or parameters
+2. give it some properties for bg-color and font color
+3. create a content directive using @content
+4. give content directive some properties for font-size and font-weight
+*/
+/*to call the mixin with content directive
+1. we want to include this mixin on a paragraph
+2. call the mixin
+3. add properties into the mixin
+*/
+p {
+  background-color: pink;
+  color: white;
+  border: 1px solid pink;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold; }
+
+/*# sourceMappingURL=css-scripting-mixins.css.map */

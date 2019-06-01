@@ -1,0 +1,106 @@
+/*---------------------------------------Scss as scripting language with logic*/
+
+/*define function - this converts px to em
+@function pxToEm ($value, $base) {
+    @return ($value / $base) + em;
+}
+
+call function within css - this will ensure font-size for h1 is 2em and this will be the value shown in the css file
+h1 {
+    font-size: pxToEm(32,16);
+}*/
+
+/*declare variable by $variabale: value;*/
+$blue: #0997d3;
+$red: #e84610;
+$green: #bada55;
+$black: #000;
+$white: #fff;
+
+/*to do a list...
+$colors: $blue, $red, $green, $black, $white;
+but a better way of doing it is by doing an object map*/
+
+/*object map*/
+$colors: (
+    red: #e84610,
+    green: #bada55,
+    black: #000,
+);
+
+/*now we have an object, we need to iterate through it by using the @each keyword
+we then use the key and value variables
+for each key and color in the object, we'll use the .item class followed by # which will put the keyword in, which is specified in {} following the #*/
+@each $key, $value in $colors {
+    .item-#{$key} {
+        background-color: $value; //so if we have .item-black as class for html element, we will have a bg-color of black, and so on
+    }
+}
+
+/*call variable within css by using the variable name for the property value and this will be the value shown in the css file*/
+body {
+    background-color: $black;
+}
+
+div {
+    border: 1px solid $black;
+}
+
+h1{
+    color: $white;
+}
+
+/*pass variable to a CSS class
+1. create variable called class and give it a value of container
+2. create .# and give it a value of class, so that does .container on the stylesheet
+3. we can then specify partcular styles to this class and assign it to any element on the html sheet and it will inherit those styles*/
+$class: container;
+
+.#{$class} {
+    background-color: orange;
+}
+
+/* for loop
+1. create variable named class-name and give it a value of item
+2. create for loop using @for
+3. do a loop from an index of 1 through 4 - this will create four different classes dynamically
+4. create the class template, so that will create .item-1, .item-2, .item-3 and .item-4
+5. create a width of 60px + the index, so .item-1 = width of 61px, .item-2 = width of 62px, .item-3 = width of 63px and .item-4 = width of 64px
+    this is reflected in the css file */
+$class-name: item;
+
+@for $i from 1 through 4 {
+   .#{$class-name}-#{$i} {
+       width: 60px + $i;
+   }
+}
+
+/* control flow (if-else directive)
+1. create variable named random and give it a fixed value of 5
+2. create a h1 element and:
+    if random variable has a value of greater than 5, the h1 will be blue;
+    else if random variable has a value of equal to 3, the h1 will be purple;
+    else h1 will be orange
+3. the color in the main css file will be orange, as value of $random falls in the else category
+
+$random: 5;
+
+h1 {
+    @if $random > 5 {
+        color: blue;
+    } @else if $random == 3 {
+        color: purple;
+    } @else {
+        color: orange;
+    }
+} */
+
+/* another example of control flow (if statement)
+1. do a h1 element
+2. if '1+1=2' which is true, then the border will be set to black
+*/
+h1 {
+    @if 1 + 1 == 2 {
+        border: 1px solid black;
+    }
+}
